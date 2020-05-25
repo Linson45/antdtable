@@ -1,0 +1,10 @@
+.ant-table-header {
+  color: red;
+}
+input.ant-input {
+  width: 500px;
+  margin-left: 650px;
+}
+.ant-pagination-total-text {
+  margin-right: 800px;
+}

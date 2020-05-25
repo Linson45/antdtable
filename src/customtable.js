@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "antd/dist/antd.css";
 import sortFunction from "./utility/sortfuncs";
+import "./main.css";
 import {
   Table,
   Tag,
@@ -24,142 +25,240 @@ const columns = [
     render: (text, record, index) => index + 1,
   },
   {
-    title: "Name",
+    title: "Product",
     dataIndex: "name",
     key: "name",
-    render: (text) => <a>{text}</a>,
-    sorter: (a, b) => a.name.length - b.name.length,
-    sortDirections: ["descend"],
+    // render: (text) => <a>{text}</a>,
+    // sorter: (a, b) => a.name.length - b.name.length,
+    // sortDirections: ["descend"],
   },
   {
-    title: "Address",
-    dataIndex: "addr",
-    key: "addr",
+    title: "Size",
+    dataIndex: "size",
+    key: "size",
   },
   {
-    title: "City",
-    dataIndex: "city",
-    key: "city",
-    sorter: (a, b) => a.city.length - b.city.length,
-    sortDirections: ["descend"],
+    title: "Available",
+    dataIndex: "available",
+    key: "available",
+    // sorter: (a, b) => a.city.length - b.city.length,
+    // sortDirections: ["descend"],
   },
   {
-    title: "Pincode",
-    key: "pin",
-    dataIndex: "pin",
+    title: "On Hand",
+    key: "onhand",
+    dataIndex: "onhand",
   },
   {
-    title: "Action",
-    key: "action",
-    render: (text, record) => (
-      <span>
-        <Tooltip title="edit">
-          <Button>{<Icon type="edit" theme="outlined"></Icon>}</Button>
-        </Tooltip>
+    title: "Pending Dispatch",
+    key: "dispatch",
+    dataIndex: "dispatch",
+    // render: (text, record) => (
+    //   <span>
+    //     <Tooltip title="edit">
+    //       <Button>{<Icon type="edit" theme="outlined"></Icon>}</Button>
+    //     </Tooltip>
 
-        <Tooltip title="View">
-          <Button>
-            <Icon type="eye" theme="outlined" />
-          </Button>
-        </Tooltip>
-        <Popconfirm
-          title="Are you sure you want to delete?"
-          onConfirm={() => this.confirm(record)}
-          onCancel={() => this.cancel}
-          okText="Yes"
-          cancelText="No"
-        >
-          <Button>{<Icon type="delete" theme="outlined"></Icon>}</Button>
-        </Popconfirm>
-      </span>
-    ),
+    //     <Tooltip title="View">
+    //       <Button>
+    //         <Icon type="eye" theme="outlined" />
+    //       </Button>
+    //     </Tooltip>
+    //     <Popconfirm
+    //       title="Are you sure you want to delete?"
+    //       onConfirm={() => this.confirm(record)}
+    //       onCancel={() => this.cancel}
+    //       okText="Yes"
+    //       cancelText="No"
+    //     >
+    //       <Button>{<Icon type="delete" theme="outlined"></Icon>}</Button>
+    //     </Popconfirm>
+    //   </span>
+    // ),
+  },
+  {
+    title: "In transit",
+    key: "transit",
+    dataIndex: "transit",
+  },
+  {
+    title: "Committed",
+    key: "com",
+    dataIndex: "com",
+  },
+  {
+    title: "Required",
+    key: "req",
+    dataIndex: "req",
+  },
+  {
+    title: "Order Quantity",
+    key: "oq",
+    dataIndex: "oq",
+  },
+  {
+    title: "Monthly Average",
+    key: "ma",
+    dataIndex: "ma",
   },
 ];
 
 const data = [
   {
     key: "1",
-    name: "John Brown",
-    addr: "Ponda",
-    city: "Curti",
-    pin: 403401,
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "2",
-    name: "Jim Green",
-    addr: "Margao",
-    city: "Marathalli",
-    pin: 403601,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "3",
-    name: "Joe Black",
-    addr: "Panaji",
-    city: "Khazi Wada",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "4",
-    name: "Keerthan",
-    addr: "Bangalore",
-    city: "Electronic city",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "5",
-    name: "Cecil Mathew",
-    addr: "Bangalore",
-    city: "Electronic city",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "6",
-    name: "Arun Jose",
-    addr: "Bangalore",
-    city: "Electronic city",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "7",
-    name: "Devdatt Sawant",
-    addr: "Bangalore",
-    city: "HSR layout",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "8",
-    name: "Babe Rexa",
-    addr: "Bangalore",
-    city: "Bellandur",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "9",
-    name: "Pranitha Pawar",
-    addr: "Panaji",
-    city: "Electronic city",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "10",
-    name: "Mantis",
-    addr: "ChinchPokli",
-    city: "Electronic city",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "11",
-    name: "Joe Black",
-    addr: "Panaji",
-    city: "Electronic city",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
   {
-    key: "12",
-    name: "Joe Black",
-    addr: "Panaji",
-    city: "Electronic city",
-    pin: 403001,
+    key: "1",
+    name: "French Twist - Girls RF062",
+    size: "3.66",
+    available: "243.5",
+    onhand: 403401,
+    dispatch: 212,
+    transit: 213,
+    com: 19.07,
+    req: 105.07,
+    oq: "",
+    ma: 1232,
   },
 ];
 
@@ -175,8 +274,8 @@ function Customtable() {
         <Content>
           <div
             style={{
-              paddingLeft: 300,
-              paddingRight: 300,
+              paddingLeft: 100,
+              paddingRight: 100,
               background: "#fff",
               minHeight: 360,
             }}
